@@ -22,10 +22,10 @@ const socialPosts = [
     {
         id: 1,
         name: 'Phil Mangione',
-        userImage: 'https://unsplash.it/300/300?image=<1>',
+        userImage: 'https://unsplash.it/300/300?image=15',
         date: '25/6/2021',
-        Text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
-        postImage: 'https://unsplash.it/300/300?image=<2>',
+        text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
+        postImage: 'https://unsplash.it/600/300?image=171',
         likes: 80
     },
     {
@@ -33,10 +33,65 @@ const socialPosts = [
         name: 'Sofia Perlari',
         userImage: null,
         date: '3/9/2021',
-        Text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
+        text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         postImage: null,
         likes: 120
     }
 ]
 
-console.log(socialPosts)
+// milestone 2
+// stampo i post 
+printArray(socialPosts);
+
+
+
+// functions
+function printArray(socialPostsArray) {
+    // variabile per concatenare il template al contenitore nell'html
+    const jsPost = document.querySelector('.posts-list');
+
+    // ciclo for che scorre singolarmente i post
+    for(let i = 0; i < socialPostsArray.length; i++) {
+        let thisPost = socialPostsArray[i];
+        const {id, name, userImage, date, text, postImage, likes} = thisPost;
+
+        // creo template
+        const newTemplate = `
+        <div class="post">
+            <div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        <img class="profile-pic"  src="${userImage}" alt="${userImage === null ? 'nessuna immagine' : ''}">                    
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${name}</div>
+                        <div class="post-meta__time">${date}</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="post__text">${text}</div>
+            <div class="post__image">
+                <img src="${postImage}" alt="${postImage === null ? 'nessuna immagine' : ''}">
+            </div>
+            <div class="post__footer">
+                <div class="likes js-likes">
+                    <div class="likes__cta">
+                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="like-button__label">Mi Piace</span>
+                        </a>
+                    </div>
+                    <div class="likes__counter">
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone
+                    </div>
+                </div> 
+            </div>
+        </div>
+        `
+
+        jsPost.innerHTML += newTemplate;
+    }
+}
+
+
+
