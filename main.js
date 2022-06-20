@@ -43,6 +43,38 @@ const socialPosts = [
 // stampo i post 
 printArray(socialPosts);
 
+// milestone 3
+// al click sul tasto "mi piace" il colore del testo del bottone cambia e il counter dei likes viene incrementato
+
+const likeButton = document.querySelectorAll('.like-button');
+const likeCounter = document.querySelectorAll('.js-likes-counter');
+
+for(let i = 0; i < likeButton.length; i++) {
+    let thisLikeButton = likeButton[i];
+    thisLikeButton.addEventListener('click', function(event){
+        event.preventDefault();
+
+        // cambio il colore del tasto aggiungendo la classe "like-button--liked"
+        if(!this.classList.contains('like-button--liked')) {
+            this.classList.add('like-button--liked')
+        }
+
+        // scorro e prendo singolarmente il div dove c'è all'interno il numero da incremnetare
+        let relativeCounter = likeCounter[i];
+        console.log(relativeCounter)
+        // prendo il numero all'interno e lo incremento
+        let relativeNumber = parseInt(relativeCounter.innerHTML)
+        relativeNumber++;
+
+        // numero incrementato stampato in pagina
+        relativeCounter.innerHTML = relativeNumber;
+        
+    })
+}
+
+
+
+
 
 
 // functions
