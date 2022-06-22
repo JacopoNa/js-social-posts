@@ -60,8 +60,7 @@ for(let i = 0; i < likeButton.length; i++) {
 
             // scorro e prendo singolarmente il div dove c'è all'interno il numero da incremnetare
             let relativeCounter = likeCounter[i];
-            console.log(relativeCounter);
-
+            console.log(relativeCounter)
             // prendo il numero all'interno e lo incremento
             let relativeNumber = parseInt(relativeCounter.innerHTML)
             relativeNumber++;
@@ -69,6 +68,7 @@ for(let i = 0; i < likeButton.length; i++) {
             // numero incrementato stampato in pagina
             relativeCounter.innerHTML = relativeNumber;
         }
+        
     })
 }
 
@@ -122,8 +122,16 @@ function printArray(socialPostsArray) {
         `
 
         jsPost.innerHTML += newTemplate;
+
+        console.log(date)
     }
 }
+
+// BONUS
+// 1. Formattare le date in formato italiano (gg/mm/aaaa)
+// 2. Gestire l'assenza dell'immagine profilo con un elemento di fallback che contiene le iniziali dell'utente (es. Luca Formicola > LF).
+// 3. Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
+
 
 
 
