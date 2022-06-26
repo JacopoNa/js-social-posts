@@ -13,6 +13,12 @@
 
 // Milestone 3 - Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
 
+
+// BONUS
+// 1. Formattare le date in formato italiano (gg/mm/aaaa)
+// 2. Gestire l'assenza dell'immagine profilo con un elemento di fallback che contiene le iniziali dell'utente (es. Luca Formicola > LF).
+// 3. Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
+
 // ---------------------------------------------------------------------------------------------------------------------------------
 
 // milestone 1
@@ -23,7 +29,7 @@ const socialPosts = [
         id: 1,
         name: 'Phil Mangione',
         userImage: 'https://unsplash.it/300/300?image=15',
-        date: '25/6/2021',
+        date: '06-25-2021',
         text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         postImage: 'https://unsplash.it/600/300?image=171',
         likes: 80
@@ -32,7 +38,7 @@ const socialPosts = [
         id: 2,
         name: 'Sofia Perlari',
         userImage: null,
-        date: '3/9/2021',
+        date: '03-09-2021',
         text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         postImage: null,
         likes: 120
@@ -97,7 +103,7 @@ function printArray(socialPostsArray) {
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${name}</div>
-                        <div class="post-meta__time">${date}</div>
+                        <div class="post-meta__time">${newDate(date)}</div>
                     </div>                    
                 </div>
             </div>
@@ -127,11 +133,16 @@ function printArray(socialPostsArray) {
     }
 }
 
-// BONUS
-// 1. Formattare le date in formato italiano (gg/mm/aaaa)
-// 2. Gestire l'assenza dell'immagine profilo con un elemento di fallback che contiene le iniziali dell'utente (es. Luca Formicola > LF).
-// 3. Al click su un pulsante "Mi Piace" di un post, se abbiamo già cliccato dobbiamo decrementare il contatore e cambiare il colore del bottone.
+// funzione che cambia una data da formato americano a formato italiano
+function newDate(americanDate) {
+    const newDateArray = americanDate.split('-');
+    const [month, day, year] = newDateArray;
+    return `${day}/${month}/${year}`;
+}
+const test = newDate('1/15/2022')
+console.log(test)
 
-
-
+function profilePicture(authorInfo) {
+    
+}
 
